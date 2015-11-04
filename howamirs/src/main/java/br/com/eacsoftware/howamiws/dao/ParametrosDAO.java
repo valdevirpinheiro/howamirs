@@ -24,13 +24,18 @@ public class ParametrosDAO {
     String reportDate = (df.format(today)).replaceAll("/", "");
     int empno = Integer.parseInt(empNO);
     int dataInt = Integer.parseInt(reportDate);
-    int dataExemplo = 20150806;
+    int dataExemplo = 20140317;
     Statement stmt = con.createStatement();
     StringBuilder sqlBuilder = new StringBuilder();
     sqlBuilder.append("SELECT *  ");
     sqlBuilder.append("FROM empmov WHERE  ");
     sqlBuilder.append("data ='" + dataExemplo + "'   ");
     sqlBuilder.append("AND empno='" + empNO + "';");
+    /*SELECT
+    SEC_TO_TIME(empmov.hora)
+    FROM
+    empmov
+    WHERE empmov.empno=1*/
     String sql = String.format(sqlBuilder.toString(), empno);
     ResultSet cursor = stmt.executeQuery(sql);
     Registro regPonto = null;
